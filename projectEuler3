@@ -1,0 +1,27 @@
+function lpf(input) {
+    
+    var temp;
+    
+    // run through input without 1 and itself
+    for (var i = input - 1; i > 1; i--) {
+    
+        // check if multiple
+        if (input % i === 0) {
+        
+            temp = i;
+            
+            // run through mutltiple
+            for (var j = temp - 1; j > 0; i--) {
+            
+                // if j made it to 1, it's prime
+                if (j === 1) {
+                  console.log(temp);
+                }
+                // if not prime
+                if (temp % j === 0) {
+                  break;
+                }
+            }
+        }
+    }
+}
