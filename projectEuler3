@@ -1,43 +1,27 @@
 /*
 
 Evan Gatchell
+
 projectEuler3.js
-Code works, but don't know why it times out on huge numbers...
+
+Had to learn maths and modify code to make more efficient algorithm. //
+Originally had two functions with many nested iterative loops until I found //
+algorithm on line 21 that reduces running time dramatically.
 
 */
 
-function prime(x) {
-    
-    // if 1, not prime
-    if ( x == 1 ) {
-        return false;
-    }
-    
-    // run through number
-    for (var i = 2; i < x; i++) {
-        // if it has a multiple, not prime
-        if ( x % i === 0 ) {
-            return false; 
-        }
-    }
-    //number is prime
-    return true;
-}
-
 function lpf(x) {
     
+    var max = x;
     
     // run through number except 1 and itself
-    for (var i = x - 1; i > 1; i--) {
+    for (var i = 2; i < max; i++) {
         
-        // if multiple found
-        if ( x % i === 0 ) {
-            
-            // if multiple is prime
-            if (prime(i)) {
-                return i;
-            }
-       }
-       i--;
+        // if multiple found, divide by multiple, keep "i" the same
+        if ( max % i === 0 ) {
+            max /= i;
+            i--;
+        }
    }
+   return i;
 }
