@@ -1,27 +1,43 @@
-function lpf(input) {
+/*
+
+Evan Gatchell
+projectEuler3.js
+Code works, but don't know why it times out on huge numbers...
+
+*/
+
+function prime(x) {
     
-    var temp;
+    // if 1, not prime
+    if ( x == 1 ) {
+        return false;
+    }
     
-    // run through input without 1 and itself
-    for (var i = input - 1; i > 1; i--) {
-    
-        // check if multiple
-        if (input % i === 0) {
-        
-            temp = i;
-            
-            // run through mutltiple
-            for (var j = temp - 1; j > 0; i--) {
-            
-                // if j made it to 1, it's prime
-                if (j === 1) {
-                  console.log(temp);
-                }
-                // if not prime
-                if (temp % j === 0) {
-                  break;
-                }
-            }
+    // run through number
+    for (var i = 2; i < x; i++) {
+        // if it has a multiple, not prime
+        if ( x % i === 0 ) {
+            return false; 
         }
     }
+    //number is prime
+    return true;
+}
+
+function lpf(x) {
+    
+    
+    // run through number except 1 and itself
+    for (var i = x - 1; i > 1; i--) {
+        
+        // if multiple found
+        if ( x % i === 0 ) {
+            
+            // if multiple is prime
+            if (prime(i)) {
+                return i;
+            }
+       }
+       i--;
+   }
 }
