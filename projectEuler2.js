@@ -25,8 +25,8 @@ for(var i = 0; i < 50; i++) {
     //update values
     x = y;
     y = z;
-    '
-	// if over ceiling, return value
+    
+    // if over ceiling, return value
     if (z > 4000000) {
         console.log(evenTotal + 2);
         break;
