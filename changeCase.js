@@ -9,4 +9,3 @@ var changeCase = function(str) {
         }
     }
     return transform.join("");
-};

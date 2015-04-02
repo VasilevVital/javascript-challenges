@@ -6,4 +6,3 @@ var reverse = function (str) {
     mixed.push(divide[i].split("").reverse().join(""));  
   }
   return mixed.join(" ");
-}
