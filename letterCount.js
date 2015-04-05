@@ -1,16 +1,57 @@
-function letterCount(string) {
-    
-    var words = string.split(" ");
-    var greatest = 0;
-    for (var i = 0; i < words.length; i++) {
-        var empty = "";
-        // push each letter to empty variable
-        // if letter already in empty variable
-            // count + 1
-        // if count >= greatest
-            // greatest = count
-            // returnValue += words[i]
+/*returns the number of most repeating letter in a word */
+function letterCount(word) {
+
+  // sorting makes count easy
+  var array = word.split('').sort();
+  // current is char
+  var current = null;
+  var count = 0;
+
+  for (var i = 0; i < array.length; i++) {
+    // don't count first letter
+    if (array[i] !== current) {
+      current = array[i];
     }
+    else {
+      count++;
+    }
+  }
+
+  return count;
 }
 
-letterCount("the dad went to the store with the mom");
+/*returns letter with highest frequency*/
+function maxLetters(string) {
+
+  // read words; letters are keys, frequency is value
+  string = string.split(' ');
+  var obj = {};
+  string.forEach(function(e) {
+    // each key is the word and its value is repeat number
+    obj[e] = letterCount(e);
+  });
+
+  // for each key, fill array with value
+  var nums = Object.keys(obj).map(function(k) {
+    return obj[k];
+  });
+
+  console.log(nums);
+
+  // set max value
+  var max = Math.max.apply(null, nums);
+
+  array = [];
+
+  // go through keys
+  Object.keys(obj).forEach(function(k) {
+    // if value equal to max
+    if (obj[k] === max) {
+      array.push(k);
+    }
+  });
+
+  return array.toString();
+}
+
+console.log(maxLetters('papapapa test abc'));
